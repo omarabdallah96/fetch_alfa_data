@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U-share Main</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #2980b9;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            border-bottom: 2px solid #2980b9;
+            padding-bottom: 5px;
+            color: #333;
+        }
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .value {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="title">U-share Main</h1>
+
+        <div class="section">
+            <h2>Account Overview</h2>
+            <div class="info">
+                <div class="label">Current Balance:</div>
+                <div class="value" id="currentBalance"></div>
+            </div>
+            <div class="info">
+                <div class="label">Mobile Number:</div>
+                <div class="value" id="mobileNumber"></div>
+            </div>
+            <div class="info">
+                <div class="label">Account Type:</div>
+                <div class="value" id="accountType"></div>
+            </div>
+            <div class="info">
+                <div class="label">Subtype:</div>
+                <div class="value" id="subType"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Service Information</h2>
+            <div class="info">
+                <div class="label">Service Name:</div>
+                <div class="value" id="serviceName"></div>
+            </div>
+            <div class="info">
+                <div class="label">Description:</div>
+                <div class="value" id="description"></div>
+            </div>
+            <div class="info">
+                <div class="label">Package:</div>
+                <div class="value" id="package"></div>
+            </div>
+            <div class="info">
+                <div class="label">Consumption:</div>
+                <div class="value" id="consumption"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample JSON data
+        let reqBody = {
+            "token": "_fbp=fb.2.1726341237886.12723814450857432; _gid=GA1.3.1857524976.1726341239; __RequestVerificationToken=rbsw-8bqZukxxRwOhOD9b2yUP93qPFlP9LdJ1Y0iyL6LihFb1LXEAXor3sOMaC-FQEACiP4GnqNGKvW0KRTRaTSmM_ded1R-wY1S4Laky3E1; _gat=1; __ACCOUNT=28038088617C365366203B543A8E1CB999569464F70699097974CE5973B61ED5BDAC0F8B76D5112396A4CBD081AF4B841016269824BAC25E9D301FE086A4A129C4E63CAA8EB31B229BF9880CF33B29EF4F22AE07FD51F0194508A3A3B9CE044A7CA34BED1CF561C491307F8854F21692F5973F978E3F45ABC3EE37417E8E578F581CF3C4358516AA054A0A7A2F2808FB2656EE9B63A447F4B830A07F2C8397908E0B92D4251CC92747D4E035B8436E659920168DA614855609EEBE099A1887A6DA8509772DD3C7A47C56BF9A9DD7427BC6006310F22A81A691060E7E9144233ED71D414AC174612C71A4E039B914AE145C31927BF09F8AC50CC8058BB71BF0DE43D6803AC679E25A43955E3F96BE70938EAD1354EB19C88B16CC35C8EFFADA6AEA3A24785B23AF040041AD4A00E752BECCF541BD510D66B6BDDFF8B74DA6AE6A87164BD474B138BD5C7CE629D3A238E42598259EEDAC3D35988BCA39E1C78B9300A9C28EAFA8E77468815AC75B509034F6C4E508FFFB98342AAE64FEA88E4E82507902514F30C1EAC8A1189BDC898A3E3B8A6CCE365D4244675939FB5D15B24775D571ECD83598375F912AEED08DA736748360383FCE65516B20F7B833224950A111BA3027C40E4ED20C6A7DD04265416EF7D6BCD614A76C03DD61EC4CABF381DF038123B9394EFE698D9F5E1CD0B0003D54A043BC8882BD1F73A91D26A4326C87C75CFD9743A9BC730FCF4FF3CAF67DCB2C7749282FDF75CF793AD6B940B1B69842B42F30560A5FF4F66CE0D9A1B817E137D2F528664D9268370B717676710BB2D33051CF83FFCDEBB6903641617922A5F3C4D47FBF163310E443E3D5483FD419614D04C77D4B19CEB3B816CFC02206D66227A21E09E1B897788AE15946F044; ASP.NET_SessionId=b01pmizdwjy4v43jalzlcqzi; TS0106f800=01942e3b6a2125f04261f4e0df8be5a7d2d4f5e34a9c3ea8f29aa6b7a480e470d3ecca408062d8887a33542f9d74098848c2f48210c3c8c6a9969bd5e587ad2d43578a79dfa9fe15c5cf8cdef8e681f4d549cfff6c47d6b8921b638ed548773ef099f500999834314412f8fd490fe8baf3ebc32bb3; _ga_6V6NBTH89C=GS1.1.1726516155.8.1.1726516194.0.0.0; _ga=GA1.3.477118007.1726341225"
+        };
+
+        async function fetchData() {
+            try {
+                const response = await fetch('http://localhost:3000/proxy', {
+                    method: 'POST', // Assuming it's a POST request
+                    headers: {
+                        'Content-Type': 'application/json' // Adjust headers if needed
+                    },
+                    body: JSON.stringify(reqBody) // Convert the request body to a JSON string
+                });
+
+                const data = await response.json();
+                console.log('Success:', data);
+
+                if (data) {
+                    console.log("data", data);
+                    displayData(data);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Populate the HTML with data
+        const displayData = (data) => {
+            document.getElementById('currentBalance').textContent = data.CurrentBalanceValue;
+            document.getElementById('mobileNumber').textContent = data.MobileNumberValue;
+            document.getElementById('accountType').textContent = data.TypeValue;
+            document.getElementById('subType').textContent = data.SubTypeValue;
+
+            const serviceInfo = data.ServiceInformationValue[0];
+            document.getElementById('serviceName').textContent = serviceInfo.ServiceNameValue;
+
+            const serviceDetails = serviceInfo.ServiceDetailsInformationValue[0];
+            document.getElementById('description').textContent = serviceDetails.DescriptionValue;
+            document.getElementById('package').textContent = `${serviceDetails.PackageValue} ${serviceDetails.PackageUnitValue}`;
+            document.getElementById('consumption').textContent = `${serviceDetails.ConsumptionValue} ${serviceDetails.ConsumptionUnitValue}`;
+        };
+
+        fetchData();
+
+    </script>
+</body>
+
+</html>
